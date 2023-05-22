@@ -6,7 +6,7 @@ const Filter = () => {
 
   const handleChange = ({ target }) => {
     const filter = target.value
-    dispatch(filterChange(filter))
+    dispatch(filterChange({ filter }))
   }
 
   const style = {
