@@ -1,14 +1,19 @@
 import { useMutation, useQueryClient } from "react-query"
 import { createNew } from "../requests"
+import { useNotificatinDispatch } from "../notificationReducer"
 
 const AnecdoteForm = () => {
   const queryClient = useQueryClient()
+  const showAndHideNotification = useNotificatinDispatch()
 
   const newNoteMutation = useMutation(createNew, {
     onSuccess: (newAnecdote) => {
       const anecdotes = queryClient.getQueryData('anecdotes')
       queryClient.setQueryData('anecdotes', anecdotes.concat(newAnecdote))
     },
+    onError: (error) => {
+      showAndHideNotification(error.response.data.error)
+    }
   })
 
   const onCreate = (event) => {

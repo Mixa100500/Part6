@@ -1,3 +1,5 @@
+import { useNotificatinValue } from "../notificationReducer"
+
 const Notification = () => {
   const style = {
     border: 'solid',
@@ -5,12 +7,14 @@ const Notification = () => {
     borderWidth: 1,
     marginBottom: 5
   }
+
+  const info = useNotificatinValue()
   
-  if (true) return null
+  if (info === '') return null
 
   return (
     <div style={style}>
-      
+      {info}
     </div>
   )
 }
