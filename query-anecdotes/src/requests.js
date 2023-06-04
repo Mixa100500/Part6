@@ -8,6 +8,5 @@ export const createNew = (newObject) =>
   axios.post(baseUrl, newObject).then(res => res.data)
 
 export const updateAnecdotes = (updatedObject) =>
-  axios.put(`${baseUrl}/${updatedObject.id}`,
-    {...updatedObject, votes: updatedObject.votes + 1})
+  axios.put(`${baseUrl}/${updatedObject.id}`, updatedObject)
   .then(res => res.data)

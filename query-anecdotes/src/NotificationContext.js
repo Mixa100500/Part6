@@ -14,26 +14,25 @@ const notificationReducer = (state, action) => {
 const NotoficationContext = createContext()
 
 export const useNotificatinValue = () => {
-  const NotoficationAndDispatch = useContext(NotoficationContext)
-  return NotoficationAndDispatch[0]
+  const [notifycation] = useContext(NotoficationContext)
+  return notifycation
 }
 
-export const useNotificatinDispatch = () => {
+export const useNotify = (content, duration) => {
   const NotoficationAndDispatch = useContext(NotoficationContext)
-  return NotoficationAndDispatch[1]
+  const dispatch = NotoficationAndDispatch[1]
+  return (content) => {
+    dispatch(content)
+    setTimeout(() => dispatch(''), duration)
+  }
 }
 
 
 export const NotificationContextProvider = (props) => {
-  const [notification, setNotification] = useReducer(notificationReducer, '')
-
-  const showAndHideNotification = (info, duration = 5000) => {
-    setNotification({ type: 'SET', payload: info })
-    setTimeout(() => setNotification({ type: 'DEL' }), duration)
-  }
+  const [notification, dispatch] = useReducer(notificationReducer, '')
   
   return (
-    <NotoficationContext.Provider value={[notification, showAndHideNotification]}>
+    <NotoficationContext.Provider value={[notification, dispatch]}>
       {props.children}
     </NotoficationContext.Provider>
   )

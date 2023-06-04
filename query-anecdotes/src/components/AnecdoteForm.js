@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "react-query"
 import { createNew } from "../requests"
-import { useNotificatinDispatch } from "../notificationReducer"
+import { useNotify } from "../NotificationContext"
 
 const AnecdoteForm = () => {
   const queryClient = useQueryClient()
-  const showAndHideNotification = useNotificatinDispatch()
+  const notifyWith = useNotify()
 
   const newNoteMutation = useMutation(createNew, {
     onSuccess: (newAnecdote) => {
@@ -12,7 +12,7 @@ const AnecdoteForm = () => {
       queryClient.setQueryData('anecdotes', anecdotes.concat(newAnecdote))
     },
     onError: (error) => {
-      showAndHideNotification(error.response.data.error)
+      notifyWith(error.response.data.error)
     }
   })
 

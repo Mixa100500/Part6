@@ -1,4 +1,4 @@
-import { useNotificatinValue } from "../notificationReducer"
+import { useNotificatinValue } from "../NotificationContext"
 
 const Notification = () => {
   const style = {
