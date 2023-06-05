@@ -22,7 +22,7 @@ const notificationReducer = createSlice({
 
 const { showNotification, hideNotification } = notificationReducer.actions
 
-export const setNotification = (content, duration = 3000) => (dispatch) => {
+export const setNotification = (content, duration = 3000) => async (dispatch) => {
   dispatch(showNotification(content))
 
   setTimeout(() => {
