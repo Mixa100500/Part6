@@ -1,6 +1,6 @@
 <h2><a href='https://fullstackopen.com/en/part6'>Part 6</h2>
 
-<h5>So far, we have placed the application's state and state logic directly inside React components. When applications grow larger, state management should be moved outside React components. In this part, we will introduce the Redux library, which is currently the most popular solution for managing the state of React applications.</h5>
+<h4>So far, we have placed the application's state and state logic directly inside React components. When applications grow larger, state management should be moved outside React components. In this part, we will introduce the Redux library, which is currently the most popular solution for managing the state of React applications.</h4>
 <ul>
   <li><a href="https://fullstackopen.com/en/part6/flux_architecture_and_redux">a Flux-architecture and Redux</a></li>
   <li><a href="https://fullstackopen.com/en/part6/many_reducers">b Many reducers</a></li>
